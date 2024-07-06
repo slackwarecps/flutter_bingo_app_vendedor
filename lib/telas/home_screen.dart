@@ -1,3 +1,7 @@
+import 'package:bingo_app_vendedor/telas/credito_screen.dart';
+import 'package:bingo_app_vendedor/telas/login_screen.dart';
+import 'package:bingo_app_vendedor/telas/perfil_screen.dart';
+import 'package:bingo_app_vendedor/telas/report_financeiro_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,21 +24,70 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Container(),
-        title: Text('Bingo Vendedor - Home'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Bem vindo',
-            ),
-            Text('home'),
-          ],
+        appBar: AppBar(
+          leading: Container(),
+          title: Text('Bingo Vendedor - Home'),
         ),
-      ),
-    );
+        body: Column(
+          children: [
+            Container(
+              child: ElevatedButton(
+                onPressed: () {
+                  print('clicou no Adicionar Credito!');
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (contextNew) => CreditoScreen(),
+                    ),
+                  );
+                },
+                child: Text('Adicionar Credito'),
+              ),
+            ),
+            Container(
+              child: ElevatedButton(
+                onPressed: () {
+                  print('clicou no perfil!');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (contextNew) => PerfilScreen(),
+                    ),
+                  );
+                },
+                child: Text('perfil'),
+              ),
+            ),
+            Container(
+              child: ElevatedButton(
+                onPressed: () {
+                  print('Report Financeiro');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (contextNew) => ReportFinanceiroScreen(),
+                    ),
+                  );
+                },
+                child: Text('Report Financeiro'),
+              ),
+            ),
+            Container(
+              child: ElevatedButton(
+                onPressed: () {
+                  print('clicou em Sair');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (contextNew) => LoginScreen(),
+                    ),
+                  );
+                },
+                child: Text('Sair'),
+              ),
+            ),
+          ],
+        ));
   }
 }
