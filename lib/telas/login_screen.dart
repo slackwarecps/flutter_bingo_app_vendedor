@@ -21,57 +21,60 @@ class _LoginScreenState extends State<LoginScreen> {
           leading: Container(),
           title: Text('Bingo vendedor login'),
         ),
-        body: Container(
-          decoration: BoxDecoration(color: Colors.yellow),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('Login '),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
+        body: Center(
+          child: Container(
+            width: 300,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Login ',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                TextFormField(
                   controller: loginController,
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
+                    labelText: 'E-mail',
                     hintText: 'Digite o login',
                     fillColor: Colors.white70,
                     filled: true,
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('senha'),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
+                Text(
+                  'senha',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                TextFormField(
                   controller: passwordController,
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
+                    labelText: 'Senha',
                     hintText: 'Digite a senha',
                     fillColor: Colors.white70,
                     filled: true,
                   ),
                 ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  print('clicou em Login');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (contextNew) => HomeScreen(),
-                    ),
-                  );
-                },
-                child: Text('Login'),
-              ),
-            ],
+                SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    print('clicou em Login');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (contextNew) => HomeScreen(),
+                      ),
+                    );
+                  },
+                  child: Text('Entrar'),
+                ),
+              ],
+            ),
           ),
         ));
   }
