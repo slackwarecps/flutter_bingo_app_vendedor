@@ -16,9 +16,9 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
+# A pasta .vscode contém configurações de lançamento e tarefas que você configura no
+# VS Code e que você pode querer incluir no controle de versão, então esta linha
+# está comentada por padrão.
 #.vscode/
 
 # Flutter/Dart/Pub related
