@@ -14,10 +14,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    loginController.text = 'vendedor@email.com.br';
+    passwordController.text = 'senha123';
     return Scaffold(
         appBar: AppBar(
           leading: Container(),
-          title: Text('Login tela'),
+          title: Text('Bingo vendedor login'),
         ),
         body: Container(
           decoration: BoxDecoration(color: Colors.yellow),
