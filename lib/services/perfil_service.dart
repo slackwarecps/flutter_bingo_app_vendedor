@@ -4,7 +4,7 @@ import 'package:http_interceptor/http_interceptor.dart';
 
 class PerfilService {
   static const String url = "https://open-bingo.wiremockapi.cloud/";
-  static const String urlx = "http://localhost:3000/";
+  static const String urlx = "http://localhost:3003/";
 
   static const String resource = "learnhttp/";
 
