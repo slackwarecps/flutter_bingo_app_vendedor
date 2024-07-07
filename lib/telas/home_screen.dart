@@ -29,66 +29,71 @@ class _HomeScreenState extends State<HomeScreen> {
           leading: Container(),
           title: Text('Bingo Vendedor - Home'),
         ),
-        body: Column(
-          children: [
-            Container(
-              child: ElevatedButton(
-                onPressed: () {
-                  print('clicou no Adicionar Credito!');
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                child: ElevatedButton(
+                  onPressed: () {
+                    print('clicou no Adicionar Credito!');
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (contextNew) => CreditoIdentificaClienteScreen(),
-                    ),
-                  );
-                },
-                child: Text('Adicionar Credito'),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (contextNew) =>
+                            CreditoIdentificaClienteScreen(),
+                      ),
+                    );
+                  },
+                  child: Text('Adicionar Credito'),
+                ),
               ),
-            ),
-            Container(
-              child: ElevatedButton(
-                onPressed: () {
-                  print('clicou no perfil!');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (contextNew) => PerfilScreen(),
-                    ),
-                  );
-                },
-                child: Text('perfil'),
+              Container(
+                child: ElevatedButton(
+                  onPressed: () {
+                    print('clicou no perfil!');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (contextNew) => PerfilScreen(),
+                      ),
+                    );
+                  },
+                  child: Text('perfil'),
+                ),
               ),
-            ),
-            Container(
-              child: ElevatedButton(
-                onPressed: () {
-                  print('Report Financeiro');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (contextNew) => ReportFinanceiroScreen(),
-                    ),
-                  );
-                },
-                child: Text('Report Financeiro'),
+              Container(
+                child: ElevatedButton(
+                  onPressed: () {
+                    print('Report Financeiro');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (contextNew) => ReportFinanceiroScreen(),
+                      ),
+                    );
+                  },
+                  child: Text('Report Financeiro'),
+                ),
               ),
-            ),
-            Container(
-              child: ElevatedButton(
-                onPressed: () {
-                  print('clicou em Sair');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (contextNew) => LoginScreen(),
-                    ),
-                  );
-                },
-                child: Text('Sair'),
+              Container(
+                child: ElevatedButton(
+                  onPressed: () {
+                    print('clicou em Sair');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (contextNew) => LoginScreen(),
+                      ),
+                    );
+                  },
+                  child: Text('Sair'),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ));
   }
 }
