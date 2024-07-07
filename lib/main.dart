@@ -1,9 +1,12 @@
+import 'package:bingo_app_vendedor/services/perfil_service.dart';
 import 'package:bingo_app_vendedor/telas/home_screen.dart';
 import 'package:bingo_app_vendedor/telas/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
+  PerfilService service = PerfilService();
+  service.register("mamae eu te amo!");
 }
 
 class MyApp extends StatelessWidget {
