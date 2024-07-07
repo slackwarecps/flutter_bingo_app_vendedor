@@ -5,11 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "run Android Emulador",
+      "name": "Run S22Ultra",
       "request": "launch",
       "type": "dart",
       "flutterMode": "debug",
       "deviceId":"RQCT303V50A"
+    },
+    {
+      "name": "Emulador Android",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "deviceId":"emulator-5554"
     }
   ]
 }

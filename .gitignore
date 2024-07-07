@@ -19,7 +19,7 @@ migrate_working_dir/
 # A pasta .vscode contém configurações de lançamento e tarefas que você configura no
 # VS Code e que você pode querer incluir no controle de versão, então esta linha
 # está comentada por padrão.
-#.vscode/
+#.vscode/emula
 
 # Flutter/Dart/Pub related
 **/doc/api/

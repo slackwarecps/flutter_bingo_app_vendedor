@@ -1,4 +1,5 @@
-import 'package:bingo_app_vendedor/telas/credito_screen.dart';
+import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_identifica_cliente.dart';
+import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_screen.dart';
 import 'package:bingo_app_vendedor/telas/login_screen.dart';
 import 'package:bingo_app_vendedor/telas/perfil_screen.dart';
 import 'package:bingo_app_vendedor/telas/report_financeiro_screen.dart';
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (contextNew) => CreditoScreen(),
+                      builder: (contextNew) => CreditoIdentificaClienteScreen(),
                     ),
                   );
                 },
