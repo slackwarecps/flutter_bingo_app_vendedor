@@ -32,4 +32,5 @@ class JournalService {
   void get() async {
     http.Response response = await client.get(Uri.parse(getURL()));
   }
+  
 }

@@ -3,10 +3,9 @@ import 'package:http/http.dart' as http;
 import 'package:http_interceptor/http_interceptor.dart';
 
 class PerfilService {
-  static const String urlc = "https://open-bingo.wiremockapi.cloud/";
   static const String url = "http://localhost:3001/";
 
-  static const String resource = "learnhttp/";
+  static const String resource = "perfil/";
 
   http.Client client =
       InterceptedClient.build(interceptors: [LoggingInterceptor()]);

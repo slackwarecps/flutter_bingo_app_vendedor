@@ -1,6 +1,8 @@
+import 'package:bingo_app_vendedor/modelos/credito.dart';
 import 'package:bingo_app_vendedor/telas/home_screen.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_coloca_valor.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 class CreditoIdentificaClienteScreen extends StatefulWidget {
   const CreditoIdentificaClienteScreen({Key? key}) : super(key: key);

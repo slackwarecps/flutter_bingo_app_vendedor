@@ -7,6 +7,7 @@ import 'package:bingo_app_vendedor/services/journal_service.dart';
 import 'package:bingo_app_vendedor/services/perfil_service.dart';
 import 'package:bingo_app_vendedor/helpers/async_study.dart';
 import 'package:bingo_app_vendedor/telas/home_screen.dart';
+import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_coloca_valor.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_conclusao.dart';
 import 'package:bingo_app_vendedor/telas/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +20,8 @@ void main() {
   // Credito credito = Credito(jogadorId: "000171717", valor: 50.00);
   // credito.jogadorId = "000171717";
   // creditoService.adicionaCredito(credito);
-  JournalService service = JournalService();
-  service.register(Journal.empty());
+  // JournalService service = JournalService();
+  // service.register(Journal.empty());
 }
 
 class MyApp extends StatelessWidget {
@@ -36,7 +37,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: LoginScreen(),
-      routes: {"home": (context) => const HomeScreen()},
+      routes: {
+        "home": (context) => const HomeScreen(),
+        "credito-conclusao": (context) => const CreditoConclusaoScreen()
+      },
       onGenerateRoute: (settings) {
         if (settings.name == "creditoConclusao") {
           final Credito credito = settings.arguments as Credito;
