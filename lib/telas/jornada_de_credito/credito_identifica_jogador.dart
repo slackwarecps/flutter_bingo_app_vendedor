@@ -1,5 +1,6 @@
 import 'package:bingo_app_vendedor/modelos/credito.dart';
 import 'package:bingo_app_vendedor/telas/home_screen.dart';
+import 'package:bingo_app_vendedor/telas/jornada_de_credito/credite_escolhe_valores.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_coloca_valor.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -74,11 +75,11 @@ class _CreditoIdentificaJogadorScreenState
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (contextNew) => CreditoColocaValorScreen(),
+                          builder: (contextNew) => CreditoEscolheValorScreen(),
                         ),
                       );
                     },
-                    child: const Text('Proximo')),
+                    child: const Text('Proximo >>')),
               ],
             ),
           ],
