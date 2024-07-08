@@ -108,11 +108,10 @@ class _CreditoEscolheValorScreenState extends State<CreditoEscolheValorScreen> {
                           ),
                         );
                       } else {
-                        Navigator.push(
+                        Navigator.pushNamed(
                           context,
-                          MaterialPageRoute(
-                            builder: (contextNew) => CreditoColocaValorScreen(),
-                          ),
+                          'credito-coloca-valor',
+                          arguments: valorEscolhido,
                         );
                       }
                     },

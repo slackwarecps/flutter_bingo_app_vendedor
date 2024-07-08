@@ -43,6 +43,12 @@ class MyApp extends StatelessWidget {
             return CreditoConclusaoScreen();
           });
         }
+
+        if (settings.name == "credito-coloca-valor") {
+          return MaterialPageRoute(builder: (context) {
+            return CreditoColocaValorScreen(valorPacote: 12.77);
+          });
+        }
       },
     );
   }

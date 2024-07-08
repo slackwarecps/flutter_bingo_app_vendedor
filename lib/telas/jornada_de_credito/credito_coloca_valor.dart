@@ -7,7 +7,9 @@ import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_conclusao.da
 import 'package:flutter/material.dart';
 
 class CreditoColocaValorScreen extends StatefulWidget {
-  const CreditoColocaValorScreen({Key? key}) : super(key: key);
+  final double valorPacote;
+  const CreditoColocaValorScreen({Key? key, required this.valorPacote})
+      : super(key: key);
 
   @override
   State<CreditoColocaValorScreen> createState() =>
@@ -18,14 +20,14 @@ class _CreditoColocaValorScreenState extends State<CreditoColocaValorScreen> {
   String titulo = 'IDENTIFICA COLOCA VALOR 2';
   final String _codigo = "223344";
   final String _nome = "Tiao do Bar";
-  final double _valor = 23.50;
+  final double _valor = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           leading: Container(),
-          title: Text('Adiciona Valor'),
+          title: Text('Coloca Valor'),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +38,7 @@ class _CreditoColocaValorScreenState extends State<CreditoColocaValorScreen> {
             SizedBox(height: 20),
             SizedBox(height: 20),
             Text('Valor Selecionado'),
-            Text(_valor.toString()),
+            Text('asdasdas'),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
