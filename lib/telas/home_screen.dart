@@ -94,8 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void onButtonSairClicked(BuildContext context) {
     print('home:: clicou em Sair');
-    //Navigator.pop(context);
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginScreen()));
+
+    Navigator.of(context).pushReplacementNamed('login');
   }
 }

@@ -75,17 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void onButtonEntrarClicked(BuildContext context) {
-    print('clicou em Login');
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomeScreen(),
-      ),
-    );
+    print('login :: clicou em entrar');
+    Navigator.of(context).pushReplacementNamed('home');
   }
-
-
-
-
-
 }
