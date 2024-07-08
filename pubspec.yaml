@@ -38,6 +38,7 @@ dependencies:
   http_interceptor: ^1.0.2
   http: ^0.13.6
   logger: ^2.3.0
+  uuid: ^4.4.0
 
 dev_dependencies:
   flutter_test:

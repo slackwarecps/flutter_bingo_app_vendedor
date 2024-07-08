@@ -1,3 +1,4 @@
+import 'package:bingo_app_vendedor/modelos/Credito.dart';
 import 'package:bingo_app_vendedor/telas/home_screen.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_conclusao.dart';
 import 'package:flutter/material.dart';
@@ -34,12 +35,24 @@ class _CreditoColocaValorScreenState extends State<CreditoColocaValorScreen> {
               children: [
                 FilledButton.tonal(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (contextNew) => CreditoConclusaoScreen(),
-                        ),
-                      );
+                      //ssssss
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (contextNew) => CreditoConclusaoScreen(),
+                      //   ),
+                      // );
+
+                      Credito creditos = Credito(
+                          jogadorId: "000171717",
+                          nome: "Tatiana Sapao",
+                          valor: 50.00,
+                          dataHora: DateTime.now(),
+                          idTransacao: "qwe65qwe65qweq6w5eq6e");
+                      Navigator.pushNamed(context, "creditoConclusao",
+                          arguments: creditos);
+
+                      //sss
                     },
                     child: const Text('Confirma')),
               ],

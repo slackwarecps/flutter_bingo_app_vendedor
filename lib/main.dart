@@ -1,15 +1,26 @@
+import 'dart:developer';
+
+import 'package:bingo_app_vendedor/modelos/Credito.dart';
+import 'package:bingo_app_vendedor/modelos/journal.dart';
+import 'package:bingo_app_vendedor/services/credito_service.dart';
+import 'package:bingo_app_vendedor/services/journal_service.dart';
 import 'package:bingo_app_vendedor/services/perfil_service.dart';
 import 'package:bingo_app_vendedor/helpers/async_study.dart';
 import 'package:bingo_app_vendedor/telas/home_screen.dart';
+import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_conclusao.dart';
 import 'package:bingo_app_vendedor/telas/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 
-  PerfilService service = PerfilService();
-  service.register("mamae eu te amo!!");
-  asyncStudy();
+  // CreditoService creditoService = CreditoService();
+
+  // Credito credito = Credito(jogadorId: "000171717", valor: 50.00);
+  // credito.jogadorId = "000171717";
+  // creditoService.adicionaCredito(credito);
+  JournalService service = JournalService();
+  service.register(Journal.empty());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,6 +36,15 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: LoginScreen(),
+      routes: {"home": (context) => const HomeScreen()},
+      onGenerateRoute: (settings) {
+        if (settings.name == "creditoConclusao") {
+          final Credito credito = settings.arguments as Credito;
+          return MaterialPageRoute(builder: (context) {
+            return CreditoConclusaoScreen();
+          });
+        }
+      },
     );
   }
 }
