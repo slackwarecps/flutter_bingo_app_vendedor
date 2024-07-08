@@ -62,5 +62,9 @@ class _CreditoConclusaoScreenState extends State<CreditoConclusaoScreen> {
             ),
           ],
         ));
+
+    callAddSolicitacaoCredito() {
+      print('chamou...');
+    }
   }
 }
