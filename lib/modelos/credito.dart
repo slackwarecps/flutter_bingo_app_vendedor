@@ -16,13 +16,10 @@ class Credito {
         nome = "",
         valor = 0.0;
 
-  factory Credito.fromMap(Map<String, dynamic> map) {
-    return Credito(
-      jogadorId: map["jogadorId"],
-      nome: map["nome"],
-      valor: map["valor"],
-    );
-  }
+  Credito.fromMap(Map<String, dynamic> map)
+      : jogadorId = map["jogadorId"],
+        nome = map["nome"],
+        valor = map["valor"].toDouble();
 
   String toString() {
     return "Credito(jogadorId: $jogadorId, nome: $nome, valor: $valor)";

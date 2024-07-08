@@ -31,7 +31,21 @@ class CreditoService {
     return false;
   }
 
-  void get() async {
+  Future<List<Credito>> getAll() async {
     http.Response response = await client.get(Uri.parse(getURL()));
+
+    if (response.statusCode != 200) {
+      throw Exception("Erro ao buscar creditos");
+    }
+
+    List<Credito> lidaDeCreditos = [];
+
+    json.decode(response.body).forEach((credito) {
+      lidaDeCreditos.add(Credito.fromMap(credito));
+    });
+
+    print(response.body);
+
+    return lidaDeCreditos;
   }
 }

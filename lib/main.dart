@@ -15,13 +15,8 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
 
-  // CreditoService creditoService = CreditoService();
-
-  // Credito credito = Credito(jogadorId: "000171717", valor: 50.00);
-  // credito.jogadorId = "000171717";
-  // creditoService.adicionaCredito(credito);
-  // JournalService service = JournalService();
-  // service.register(Journal.empty());
+  CreditoService creditoService = CreditoService();
+  creditoService.getAll();
 }
 
 class MyApp extends StatelessWidget {
