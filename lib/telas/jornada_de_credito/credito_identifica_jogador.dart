@@ -7,10 +7,10 @@ class CreditoIdentificaClienteScreen extends StatefulWidget {
 
   @override
   State<CreditoIdentificaClienteScreen> createState() =>
-      _CreditoIdentificaClienteScreenState();
+      _CreditoIdentificaJogadorScreenState();
 }
 
-class _CreditoIdentificaClienteScreenState
+class _CreditoIdentificaJogadorScreenState
     extends State<CreditoIdentificaClienteScreen> {
   TextEditingController jogadorIdController = TextEditingController();
   TextEditingController telefoneController = TextEditingController();
@@ -63,7 +63,10 @@ class _CreditoIdentificaClienteScreenState
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 FilledButton.tonal(
-                    onPressed: () {}, child: const Text('Voltar')),
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'home');
+                    },
+                    child: const Text('Voltar')),
                 FilledButton.tonal(
                     onPressed: () {
                       Navigator.push(

@@ -1,5 +1,5 @@
 import 'package:bingo_app_vendedor/telas/home_screen.dart';
-import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_identifica_cliente.dart';
+import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_identifica_jogador.dart';
 import 'package:flutter/material.dart';
 
 class CreditoConclusaoScreen extends StatefulWidget {

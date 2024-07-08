@@ -33,15 +33,14 @@ class _CreditoColocaValorScreenState extends State<CreditoColocaValorScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Voltar')),
                 FilledButton.tonal(
                     onPressed: () {
                       //ssssss
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (contextNew) => CreditoConclusaoScreen(),
-                      //   ),
-                      // );
 
                       Credito creditos = Credito(
                           jogadorId: "000171717",

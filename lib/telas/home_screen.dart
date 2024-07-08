@@ -1,4 +1,4 @@
-import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_identifica_cliente.dart';
+import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_identifica_jogador.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_screen.dart';
 import 'package:bingo_app_vendedor/telas/login_screen.dart';
 import 'package:bingo_app_vendedor/telas/perfil_screen.dart';
