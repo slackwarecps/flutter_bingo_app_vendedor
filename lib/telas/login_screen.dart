@@ -64,12 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ElevatedButton(
                   onPressed: () {
                     print('clicou em Login');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (contextNew) => HomeScreen(),
-                      ),
-                    );
+                    onButtonEntrarClicked(context);
                   },
                   child: Text('Entrar'),
                 ),
@@ -78,4 +73,19 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ));
   }
+
+  void onButtonEntrarClicked(BuildContext context) {
+    print('clicou em Login');
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomeScreen(),
+      ),
+    );
+  }
+
+
+
+
+
 }

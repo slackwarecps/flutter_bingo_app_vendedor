@@ -2,7 +2,7 @@ import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_identifica_j
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_screen.dart';
 import 'package:bingo_app_vendedor/telas/login_screen.dart';
 import 'package:bingo_app_vendedor/telas/perfil_screen.dart';
-import 'package:bingo_app_vendedor/telas/report_financeiro_screen.dart';
+import 'package:bingo_app_vendedor/telas/financeiro/report_financeiro_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -82,12 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     print('clicou em Sair');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (contextNew) => LoginScreen(),
-                      ),
-                    );
+                    onButtonSairClicked(context);
                   },
                   child: Text('Sair'),
                 ),
@@ -95,5 +90,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ));
+  }
+
+  void onButtonSairClicked(BuildContext context) {
+    print('home:: clicou em Sair');
+    //Navigator.pop(context);
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 }
