@@ -6,6 +6,7 @@ import 'package:bingo_app_vendedor/telas/login_screen.dart';
 import 'package:bingo_app_vendedor/telas/perfil/perfil_screen.dart';
 import 'package:bingo_app_vendedor/telas/financeiro/report_financeiro_filtro_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -27,73 +28,76 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: Container(),
-          title: Text('Bingo Vendedor - Home'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                child: ElevatedButton(
-                  onPressed: () {
-                    print('clicou no Adicionar Credito!');
+      appBar: AppBar(
+        title: Text('Bingo Vendedor - Home'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              child: ElevatedButton(
+                onPressed: () {
+                  print('clicou no Adicionar Credito!');
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (contextNew) =>
-                            CreditoIdentificaClienteScreen(),
-                      ),
-                    );
-                  },
-                  child: Text('Adicionar Credito'),
-                ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (contextNew) => CreditoIdentificaClienteScreen(),
+                    ),
+                  );
+                },
+                child: Text('Adicionar Credito'),
               ),
-              Container(
-                child: ElevatedButton(
-                  onPressed: () {
-                    buttonChamaPerfilClicked(context);
-                  },
-                  child: Text('perfil'),
-                ),
+            ),
+            Container(
+              child: ElevatedButton(
+                onPressed: () {
+                  buttonChamaPerfilClicked(context);
+                },
+                child: Text('perfil'),
               ),
-              Container(
-                child: ElevatedButton(
-                  onPressed: () {
-                    print('Report Financeiro');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (contextNew) => ReportFinanceiroFiltroScreen(),
-                      ),
-                    );
-                  },
-                  child: Text('Report Financeiro'),
-                ),
+            ),
+            Container(
+              child: ElevatedButton(
+                onPressed: () {
+                  print('Report Financeiro');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (contextNew) => ReportFinanceiroFiltroScreen(),
+                    ),
+                  );
+                },
+                child: Text('Report Financeiro'),
               ),
-              Container(
-                child: ElevatedButton(
-                  onPressed: () {
-                    onButtonTesteClicked(context);
-                  },
-                  child: Text('Teste'),
-                ),
+            ),
+            Container(
+              child: ElevatedButton(
+                onPressed: () {
+                  onButtonTesteClicked(context);
+                },
+                child: Text('Teste'),
               ),
-              Container(
-                child: ElevatedButton(
-                  onPressed: () {
-                    print('clicou em Sair');
-                    onButtonSairClicked(context);
-                  },
-                  child: Text('Sair'),
-                ),
-              ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text("Sair"),
+              onTap: () {
+                logout();
+              },
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   void onButtonSairClicked(BuildContext context) {
@@ -121,5 +125,15 @@ class _HomeScreenState extends State<HomeScreen> {
     };
 
     Navigator.pushNamed(context, 'perfil', arguments: meuMapa);
+  }
+
+  void logout() {
+    print('logout');
+
+    SharedPreferences.getInstance().then((prefs) {
+      prefs.clear();
+      print('prefs apagado!!');
+      Navigator.of(context).pushReplacementNamed('login');
+    });
   }
 }
