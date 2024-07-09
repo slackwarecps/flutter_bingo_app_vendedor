@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:http_interceptor/http_interceptor.dart';
 
 class CreditoService {
-  static const String url = "http://192.168.1.104:3000/";
+  static const String urlx = "http://192.168.1.104:3000/";
+  static const String url = "https://open-bingo.wiremockapi.cloud/";
 
   static const String resource = "credito/";
 
