@@ -1,4 +1,3 @@
-import 'package:bingo_app_vendedor/componentes/home_screen_list.dart';
 import 'package:bingo_app_vendedor/modelos/Credito.dart';
 import 'package:bingo_app_vendedor/modelos/screen_arguments.dart';
 import 'package:bingo_app_vendedor/services/credito_service.dart';
@@ -26,6 +25,7 @@ class _ReportFinanceiroScreenState extends State<ReportFinanceiroScreen> {
   List<Widget> listaDeLinhas = [];
   final ScrollController _listScrollController = ScrollController();
   final CreditoService _creditoService = CreditoService();
+  List<Credito> listaDeCredito = [];
 
   @override
   void initState() {
@@ -40,25 +40,36 @@ class _ReportFinanceiroScreenState extends State<ReportFinanceiroScreen> {
         as ReportFinanceiroParametros;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Financeiro Créditos tela'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.refresh),
-            onPressed: () {
-              refresh();
-            },
-          )
-        ],
-      ),
-      body: ListView(
-        controller: _listScrollController,
-        children: generateListJournalCards(
-          windowPage: windowPage,
-          database: database,
-          refreshFunction: refresh,
+        appBar: AppBar(
+          title: Text('Financeiro Créditos tela'),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.refresh),
+              onPressed: () {
+                refresh();
+              },
+            )
+          ],
         ),
-      ),
+        body: gerarListaDeLinhas(database));
+  }
+
+  ListView gerarListaDeLinhas(
+    Map<String, Credito> database,
+  ) {
+    return ListView.builder(
+      itemCount: listaDeCredito.length,
+      itemBuilder: (context, index) {
+        final credito = listaDeCredito[index];
+        return Card(
+          child: ListTile(
+            leading: Icon(Icons.monetization_on),
+            title:
+                Text('jogadorId: ${credito.jogadorId} \nnome: ${credito.nome}'),
+            subtitle: Text(credito.valor.toString()),
+          ),
+        );
+      },
     );
   }
 
@@ -69,6 +80,7 @@ class _ReportFinanceiroScreenState extends State<ReportFinanceiroScreen> {
       database = {};
       for (Credito credito in listaCredito) {
         database[credito.jogadorId] = credito;
+        listaDeCredito.add(credito);
       }
 
       if (_listScrollController.hasClients) {

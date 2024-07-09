@@ -12,6 +12,11 @@
       "jogadorId": "13",
       "nome": "Fatima do Bar",
       "valor": 50
+    },
+    {
+      "jogadorId": "14",
+      "nome": "Curva do Rio",
+      "valor": 100
     }
   ],
   "journals": [
