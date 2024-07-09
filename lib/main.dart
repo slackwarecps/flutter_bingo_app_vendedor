@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bingo_app_vendedor/modelos/Credito.dart';
 import 'package:bingo_app_vendedor/modelos/credito_argumentos.dart';
 import 'package:bingo_app_vendedor/modelos/journal.dart';
+import 'package:bingo_app_vendedor/modelos/perfil_vendedor.dart';
 import 'package:bingo_app_vendedor/modelos/screen_arguments.dart';
 import 'package:bingo_app_vendedor/services/credito_service.dart';
 import 'package:bingo_app_vendedor/services/journal_service.dart';
@@ -13,7 +14,7 @@ import 'package:bingo_app_vendedor/telas/home_screen.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_coloca_valor.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_conclusao.dart';
 import 'package:bingo_app_vendedor/telas/login_screen.dart';
-import 'package:bingo_app_vendedor/telas/perfil_screen.dart';
+import 'package:bingo_app_vendedor/telas/perfil/perfil_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -39,12 +40,26 @@ class MyApp extends StatelessWidget {
       routes: {
         "login": (context) => const LoginScreen(),
         "home": (context) => const HomeScreen(),
-        "perfil": (context) => const PerfilScreen(),
         ReportFinanceiroScreen.routeName: (context) =>
             const ReportFinanceiroScreen(),
         "credito-conclusao": (context) => const CreditoConclusaoScreen()
       },
       onGenerateRoute: (settings) {
+        if (settings.name == "perfil") {
+          Map<String, dynamic> meuMapa =
+              settings.arguments as Map<String, dynamic>;
+          final PerfilVendedor perfilVendedor =
+              meuMapa['perfilVendedor'] as PerfilVendedor;
+          final bool isEdit = meuMapa['isEdit'];
+
+          return MaterialPageRoute(builder: (context) {
+            return PerfilScreen(
+              perfilVendedor: perfilVendedor,
+              isEdit: isEdit,
+            );
+          });
+        }
+
         if (settings.name == "creditoConclusao") {
           final Credito credito = settings.arguments as Credito;
           return MaterialPageRoute(builder: (context) {

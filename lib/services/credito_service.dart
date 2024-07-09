@@ -24,6 +24,20 @@ class CreditoService {
     return "$url$resourceJournal";
   }
 
+  Future<bool> edita(String id, Credito credito) async {
+    String jsonCredito = json.encode(credito.toMap());
+
+    http.Response response = await http.put(
+      Uri.parse("${getURL()}$id"),
+      headers: {"Content-Type": "application/json"},
+      body: jsonCredito,
+    );
+    if (response.statusCode == 200) {
+      return true;
+    }
+    return false;
+  }
+
   Future<bool> adicionaCredito(Credito credito) async {
     String jsonCredito = json.encode(credito.toMap());
 
@@ -54,14 +68,6 @@ class CreditoService {
     }
     return false;
   }
-
-
-
-
-
-
-
-  
 
   Future<List<Credito>> getAll() async {
     http.Response response = await client.get(Uri.parse(getURL()));

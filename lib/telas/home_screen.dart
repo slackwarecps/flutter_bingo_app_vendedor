@@ -1,8 +1,9 @@
+import 'package:bingo_app_vendedor/modelos/perfil_vendedor.dart';
 import 'package:bingo_app_vendedor/modelos/screen_arguments.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_identifica_jogador.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_screen.dart';
 import 'package:bingo_app_vendedor/telas/login_screen.dart';
-import 'package:bingo_app_vendedor/telas/perfil_screen.dart';
+import 'package:bingo_app_vendedor/telas/perfil/perfil_screen.dart';
 import 'package:bingo_app_vendedor/telas/financeiro/report_financeiro_filtro_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -54,13 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 child: ElevatedButton(
                   onPressed: () {
-                    print('clicou no perfil!');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (contextNew) => PerfilScreen(),
-                      ),
-                    );
+                    buttonChamaPerfilClicked(context);
                   },
                   child: Text('perfil'),
                 ),
@@ -114,5 +109,17 @@ class _HomeScreenState extends State<HomeScreen> {
           'Titulo Lindo',
           'Agora vai jose!!!',
         ));
+  }
+
+  void buttonChamaPerfilClicked(BuildContext context) {
+    print('home:: clicou em Perfil');
+    Map<String, dynamic> mapa2 = {}; //inicilizando vazio teste
+
+    Map<String, dynamic> meuMapa = {
+      'perfilVendedor': PerfilVendedor.empty(),
+      'isEdit': true
+    };
+
+    Navigator.pushNamed(context, 'perfil', arguments: meuMapa);
   }
 }

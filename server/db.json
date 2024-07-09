@@ -2,6 +2,17 @@
   "learnhttp": {
     "data": "ola mamae"
   },
+  "perfil": [
+    {
+      "id": "20041979",
+      "nome": "",
+      "celular": "",
+      "contato": "",
+      "createdAt": "",
+      "endereco": "",
+      "status": ""
+    }
+  ],
   "credito": [
     {
       "jogadorId": "123",
