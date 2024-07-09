@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:bingo_app_vendedor/modelos/Credito.dart';
+import 'package:bingo_app_vendedor/modelos/credito_argumentos.dart';
 import 'package:bingo_app_vendedor/modelos/journal.dart';
 import 'package:bingo_app_vendedor/modelos/screen_arguments.dart';
 import 'package:bingo_app_vendedor/services/credito_service.dart';
@@ -51,11 +52,17 @@ class MyApp extends StatelessWidget {
           });
         }
 
-        if (settings.name == "credito-coloca-valor") {
-          return MaterialPageRoute(builder: (context) {
-            return CreditoColocaValorScreen(valorPacote: 12.77);
-          });
-        }
+        // Coloca Credito :: credito-coloca-valor
+        // if (settings.name == CreditoColocaValorScreen.routeName) {
+        //   final args = settings.arguments as CreditoArgumentos;
+        //   return MaterialPageRoute(
+        //     builder: (context) {
+        //       return CreditoColocaValorScreen(
+        //           //valorPacote: args.valorPacote,
+        //           );
+        //     },
+        //   );
+        // }
 
         // If you push the PassArguments route
         if (settings.name == ReportFinanceiroScreen.routeName) {

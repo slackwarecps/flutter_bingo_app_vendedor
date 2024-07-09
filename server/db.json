@@ -4,19 +4,40 @@
   },
   "credito": [
     {
+      "jogadorId": "123",
+      "nome": "Tiao do Bar",
+      "valor": 23.5,
+      "id": 1
+    },
+    {
       "jogadorId": "12",
       "nome": "Tiao do Bar",
-      "valor": 30
+      "valor": 30,
+      "id": 2
     },
     {
-      "jogadorId": "13",
-      "nome": "Fatima do Bar",
-      "valor": 50
+      "jogadorId": "12",
+      "nome": "Tiao do Bar",
+      "valor": 30,
+      "id": 3
     },
     {
-      "jogadorId": "14",
-      "nome": "Curva do Rio",
-      "valor": 100
+      "jogadorId": "12",
+      "nome": "Tiao do Bar",
+      "valor": 30,
+      "id": 4
+    },
+    {
+      "jogadorId": "12",
+      "nome": "Tiao do Bar",
+      "valor": 30,
+      "id": 5
+    },
+    {
+      "jogadorId": "12",
+      "nome": "Tiao do Bar",
+      "valor": 30,
+      "id": 6
     }
   ],
   "journals": [
@@ -25,6 +46,30 @@
       "content": "",
       "created_at": "2024-07-08 09:03:34.247732",
       "updated_at": "2024-07-08 09:03:34.247735"
+    },
+    {
+      "id": "809caf50-7a05-1077-9a8e-79beab72dd35",
+      "content": "",
+      "created_at": "2024-07-09 08:52:12.739322",
+      "updated_at": "2024-07-09 08:52:12.739364"
+    },
+    {
+      "id": "c5b11b10-7acf-1077-9a8e-79beab72dd35",
+      "content": "",
+      "created_at": "2024-07-09 08:53:39.613877",
+      "updated_at": "2024-07-09 08:53:39.613929"
+    },
+    {
+      "id": "800e9060-7c87-1077-9a8e-79beab72dd35",
+      "content": "",
+      "created_at": "2024-07-09 08:56:48.474862",
+      "updated_at": "2024-07-09 08:56:48.474877"
+    },
+    {
+      "id": "be418d70-8195-1077-9a8e-79beab72dd35",
+      "content": "",
+      "created_at": "2024-07-09 09:06:04.347492",
+      "updated_at": "2024-07-09 09:06:04.349894"
     }
   ]
 }

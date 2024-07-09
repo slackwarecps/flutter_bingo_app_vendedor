@@ -1,3 +1,4 @@
+import 'package:bingo_app_vendedor/modelos/credito_argumentos.dart';
 import 'package:bingo_app_vendedor/telas/home_screen.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_coloca_valor.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_identifica_jogador.dart';
@@ -100,29 +101,40 @@ class _CreditoEscolheValorScreenState extends State<CreditoEscolheValorScreen> {
                     child: const Text('Voltar')),
                 FilledButton.tonal(
                     onPressed: () {
-                      if (valorEscolhido == 0) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                                'Não é possível continuar sem selecionar um valor.'),
-                          ),
-                        );
-                      } else {
-                        Navigator.pushNamed(
-                          context,
-                          'credito-coloca-valor',
-                          arguments: valorEscolhido,
-                        );
-                      }
+                      onButtonContinuaClicked(context);
                     },
                     child: const Text('CONTINUA >>')),
               ],
             ),
           ],
         ));
+  }
 
-    callAddSolicitacaoCredito() {
-      print('chamou...');
+  void onButtonContinuaClicked(BuildContext context) {
+    print('clicou no Botao Continua!');
+
+    if (valorEscolhido == 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Não é possível continuar sem selecionar um valor.'),
+        ),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const CreditoColocaValorScreen(),
+          settings: RouteSettings(
+            arguments: CreditoArgumentos('999', valorEscolhido),
+          ),
+        ),
+      );
+      // Navigator.pushNamed(
+      //   context,
+      //   'credito-coloca-valor',
+      //   arguments: CreditoArgumentos('999', valorEscolhido),
+      // );
     }
+    // Navigator.pushNamed(context, 'credito-coloca-valor');
   }
 }

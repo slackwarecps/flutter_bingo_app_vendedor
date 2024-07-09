@@ -1,15 +1,15 @@
 import 'dart:ffi';
 
 import 'package:bingo_app_vendedor/modelos/Credito.dart';
+import 'package:bingo_app_vendedor/modelos/credito_argumentos.dart';
 import 'package:bingo_app_vendedor/services/credito_service.dart';
 import 'package:bingo_app_vendedor/telas/home_screen.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_conclusao.dart';
 import 'package:flutter/material.dart';
 
 class CreditoColocaValorScreen extends StatefulWidget {
-  final double valorPacote;
-  const CreditoColocaValorScreen({Key? key, required this.valorPacote})
-      : super(key: key);
+  static const routeName = 'report-financeiro';
+  const CreditoColocaValorScreen({Key? key}) : super(key: key);
 
   @override
   State<CreditoColocaValorScreen> createState() =>
@@ -24,6 +24,9 @@ class _CreditoColocaValorScreenState extends State<CreditoColocaValorScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)?.settings.arguments as CreditoArgumentos;
+
     return Scaffold(
         appBar: AppBar(
           leading: Container(),
@@ -34,11 +37,11 @@ class _CreditoColocaValorScreenState extends State<CreditoColocaValorScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(_nome),
-            Text('Codigo: $_codigo'),
+            Text('Codigo: ${args.jogadorId}'),
             SizedBox(height: 20),
             SizedBox(height: 20),
             Text('Valor Selecionado'),
-            Text('asdasdas'),
+            Text(args.valor.toString()),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -71,6 +74,11 @@ class _CreditoColocaValorScreenState extends State<CreditoColocaValorScreen> {
     creditoService.adicionaCredito(credito).then((value) {
       Navigator.pushNamed(context, 'credito-conclusao');
       print('Deu certo fechando tela');
+    });
+
+    creditoService.adicionaCreditoFake(credito).then((value) {
+      Navigator.pushNamed(context, 'credito-conclusao');
+      print('Deu certo fechando tela FAKE');
     });
   }
 }
