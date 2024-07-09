@@ -1,4 +1,11 @@
 {
+  "users": [
+    {
+      "email": "ninguem@mail.com",
+      "password": "$2a$10$WsUiQQ7wHhDrRm6vVhC6auuyKzET./Hwl8KsESL8PY92MeN8SD1qG",
+      "id": 1
+    }
+  ],
   "learnhttp": {
     "data": "ola mamae"
   },

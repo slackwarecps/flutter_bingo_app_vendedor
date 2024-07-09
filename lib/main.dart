@@ -14,6 +14,7 @@ import 'package:bingo_app_vendedor/telas/home_screen.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_coloca_valor.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_conclusao.dart';
 import 'package:bingo_app_vendedor/telas/login_screen.dart';
+import 'package:bingo_app_vendedor/telas/login_screen/login_novo_screen.dart';
 import 'package:bingo_app_vendedor/telas/perfil/perfil_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -36,9 +37,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: "login",
+      initialRoute: "login-novo",
       routes: {
         "login": (context) => const LoginScreen(),
+        "login-novo": (context) => LoginNovoScreen(),
         "home": (context) => const HomeScreen(),
         ReportFinanceiroScreen.routeName: (context) =>
             const ReportFinanceiroScreen(),
