@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:bingo_app_vendedor/services/http_interceptors.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_interceptor/http_interceptor.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   //TODO: Implementar a lógica de login e registro
@@ -47,7 +48,7 @@ class AuthService {
     salvaInfoUsuario(response.body);
   }
 
-  salvaInfoUsuario(String body) {
+  salvaInfoUsuario(String body) async {
     Map<String, dynamic> map = jsonDecode(body);
     print("*************");
     print(map);
@@ -57,6 +58,15 @@ class AuthService {
     int id = map["user"]["id"];
     print(" $token / $email / $id");
     print("*************");
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString("accessToken", token);
+    await prefs.setString("email", email);
+    await prefs.setInt("id", id);
+
+    final String? accessToken = prefs.getString('accessToken');
+
+    print("Token salvo: $accessToken");
   }
 }
 
