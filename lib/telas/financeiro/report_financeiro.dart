@@ -61,13 +61,24 @@ class _ReportFinanceiroScreenState extends State<ReportFinanceiroScreen> {
       itemCount: listaDeCredito.length,
       itemBuilder: (context, index) {
         final credito = listaDeCredito[index];
-        return Card(
-          child: ListTile(
-            leading: Icon(Icons.monetization_on),
-            title:
-                Text('jogadorId: ${credito.jogadorId} \nnome: ${credito.nome}'),
-            subtitle: Text(credito.valor.toString()),
-          ),
+        return Column(
+          children: [
+            Container(
+              child: Card(
+                child: ListTile(
+                  leading: Icon(Icons.monetization_on),
+                  title: Text(
+                      'jogadorId: ${credito.jogadorId} \nnome: ${credito.nome}'),
+                  subtitle: Text(credito.valor.toString()),
+                ),
+              ),
+            ),
+            IconButton(
+                onPressed: () {
+                  buttonRemoveCredito();
+                },
+                icon: Icon(Icons.delete)),
+          ],
         );
       },
     );
@@ -88,5 +99,17 @@ class _ReportFinanceiroScreenState extends State<ReportFinanceiroScreen> {
         _listScrollController.jumpTo(position);
       }
     });
+  }
+
+  void buttonRemoveCredito() {
+    if (1 == 1) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Credito removido com sucesso'),
+        ),
+      );
+      //Atualiza a lista
+      refresh();
+    }
   }
 }

@@ -24,6 +24,15 @@ class CreditoService {
     return "$url$resourceJournal";
   }
 
+  Future<bool> remove(String id) async {
+    http.Response response = await http.delete(Uri.parse("${getURL()}$id"),
+        headers: {"Content-Type": "application/json"});
+    if (response.statusCode == 200) {
+      return true;
+    }
+    return false;
+  }
+
   Future<bool> edita(String id, Credito credito) async {
     String jsonCredito = json.encode(credito.toMap());
 
