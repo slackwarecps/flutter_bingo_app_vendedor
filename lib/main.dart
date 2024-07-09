@@ -2,10 +2,12 @@ import 'dart:developer';
 
 import 'package:bingo_app_vendedor/modelos/Credito.dart';
 import 'package:bingo_app_vendedor/modelos/journal.dart';
+import 'package:bingo_app_vendedor/modelos/screen_arguments.dart';
 import 'package:bingo_app_vendedor/services/credito_service.dart';
 import 'package:bingo_app_vendedor/services/journal_service.dart';
 import 'package:bingo_app_vendedor/services/perfil_service.dart';
 import 'package:bingo_app_vendedor/helpers/async_study.dart';
+import 'package:bingo_app_vendedor/telas/financeiro/report_financeiro.dart';
 import 'package:bingo_app_vendedor/telas/home_screen.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_coloca_valor.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_conclusao.dart';
@@ -17,7 +19,7 @@ void main() {
   runApp(const MyApp());
 
   CreditoService creditoService = CreditoService();
-  creditoService.getAll();
+  //creditoService.getAll();
 }
 
 class MyApp extends StatelessWidget {
@@ -37,6 +39,8 @@ class MyApp extends StatelessWidget {
         "login": (context) => const LoginScreen(),
         "home": (context) => const HomeScreen(),
         "perfil": (context) => const PerfilScreen(),
+        ReportFinanceiroScreen.routeName: (context) =>
+            const ReportFinanceiroScreen(),
         "credito-conclusao": (context) => const CreditoConclusaoScreen()
       },
       onGenerateRoute: (settings) {
@@ -52,6 +56,28 @@ class MyApp extends StatelessWidget {
             return CreditoColocaValorScreen(valorPacote: 12.77);
           });
         }
+
+        // If you push the PassArguments route
+        if (settings.name == ReportFinanceiroScreen.routeName) {
+          // Cast the arguments to the correct
+          // type: ScreenArguments.
+          final args = settings.arguments as ReportFinanceiroParametros;
+
+          // Then, extract the required data from
+          // the arguments and pass the data to the
+          // correct screen.
+          return MaterialPageRoute(
+            builder: (context) {
+              return ReportFinanceiroScreen(
+                  //message: 'teste',
+                  //title: args.title,
+                  //message: args.message,
+                  );
+            },
+          );
+        }
+        assert(false, 'Precisar ser Implementado ${settings.name}');
+        return null;
       },
     );
   }

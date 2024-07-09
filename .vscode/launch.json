@@ -12,6 +12,13 @@
       "deviceId":"RQCT303V50A"
     },
     {
+      "name": "Run Chrome",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "deviceId":"chrome"
+    },
+    {
       "name": "Emulador Android",
       "request": "launch",
       "type": "dart",

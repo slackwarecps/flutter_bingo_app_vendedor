@@ -1,8 +1,9 @@
+import 'package:bingo_app_vendedor/modelos/screen_arguments.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_identifica_jogador.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_screen.dart';
 import 'package:bingo_app_vendedor/telas/login_screen.dart';
 import 'package:bingo_app_vendedor/telas/perfil_screen.dart';
-import 'package:bingo_app_vendedor/telas/financeiro/report_financeiro_screen.dart';
+import 'package:bingo_app_vendedor/telas/financeiro/report_financeiro_filtro_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -71,11 +72,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (contextNew) => ReportFinanceiroScreen(),
+                        builder: (contextNew) => ReportFinanceiroFiltroScreen(),
                       ),
                     );
                   },
                   child: Text('Report Financeiro'),
+                ),
+              ),
+              Container(
+                child: ElevatedButton(
+                  onPressed: () {
+                    onButtonTesteClicked(context);
+                  },
+                  child: Text('Teste'),
                 ),
               ),
               Container(
@@ -96,5 +105,14 @@ class _HomeScreenState extends State<HomeScreen> {
     print('home:: clicou em Sair');
 
     Navigator.of(context).pushReplacementNamed('login');
+  }
+
+  void onButtonTesteClicked(BuildContext context) {
+    print('home:: clicou em Teste');
+    Navigator.of(context).pushReplacementNamed('report-financeiro',
+        arguments: ReportFinanceiroParametros(
+          'Titulo Lindo',
+          'Agora vai jose!!!',
+        ));
   }
 }
