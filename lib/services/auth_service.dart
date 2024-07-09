@@ -35,7 +35,7 @@ class AuthService {
     return true;
   }
 
-  register({required String email, required String senha}) async {
+  Future<bool> register({required String email, required String senha}) async {
     http.Response response = await client.post(
       Uri.parse("${url}register"),
       body: {"email": email, "password": senha},
@@ -46,6 +46,8 @@ class AuthService {
 
     // salva info do usuario
     salvaInfoUsuario(response.body);
+
+    return true;
   }
 
   salvaInfoUsuario(String body) async {

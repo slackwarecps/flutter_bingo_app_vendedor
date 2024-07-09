@@ -82,14 +82,26 @@ class LoginNovoScreen extends StatelessWidget {
     print("Botão de login clicado $email / $senha");
 
     try {
-      bool result = await authService.login(email: email, senha: senha);
+      authService.login(email: email, senha: senha).then((resultLogin) {
+        if (resultLogin == true) {
+          Navigator.pushNamed(context, 'home');
+        }
+        ;
+        print("Login efetuado com sucesso");
+      });
     } on UserNotFindException {
       showConfirmationDialog(context,
               conteudo:
                   "Deseja cria um novo usuario com email e senha inseridos? ")
           .then((value) {
         if (value == true) {
-          authService.register(email: email, senha: senha);
+          authService.register(email: email, senha: senha).then((resultLogin) {
+            if (resultLogin == true) {
+              Navigator.pushNamed(context, 'home');
+            }
+            ;
+            print("Login efetuado com sucesso");
+          });
         }
       });
       print("Usuário não encontrado");

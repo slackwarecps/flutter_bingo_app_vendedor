@@ -33,39 +33,45 @@
   "credito": [
     {
       "jogadorId": "123",
-      "nome": "Tiao do Bar",
+      "nome": "1 milhao @@@@@@@@",
       "valor": 23.5,
-      "id": 1
+      "id": 1,
+      "userId": 2
     },
     {
       "jogadorId": "12",
       "nome": "Tiao do Bar",
       "valor": 30,
-      "id": 2
+      "id": 2,
+      "userId": 1
     },
     {
       "jogadorId": "12",
       "nome": "Tiao do Bar",
       "valor": 30,
-      "id": 3
+      "id": 3,
+      "userId": 1
     },
     {
       "jogadorId": "12",
       "nome": "Tiao do Bar",
       "valor": 30,
-      "id": 4
+      "id": 4,
+      "userId": 1
     },
     {
       "jogadorId": "12",
       "nome": "Tiao do Bar",
       "valor": 30,
-      "id": 5
+      "id": 5,
+      "userId": 1
     },
     {
       "jogadorId": "12",
       "nome": "Tiao do Bar",
       "valor": 30,
-      "id": 6
+      "id": 6,
+      "userId": 1
     }
   ],
   "journals": [

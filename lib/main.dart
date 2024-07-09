@@ -17,16 +17,33 @@ import 'package:bingo_app_vendedor/telas/login_screen.dart';
 import 'package:bingo_app_vendedor/telas/login_screen/login_novo_screen.dart';
 import 'package:bingo_app_vendedor/telas/perfil/perfil_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<bool> verificaToken() async {
+  return SharedPreferences.getInstance().then((prefs) {
+    String? token = prefs.getString('token');
+    if (token != null) {
+      return true;
+    }
+    return false;
+  });
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  bool estaLogado = await verificaToken();
+  runApp(MyApp(
+    estaLogado: estaLogado,
+  ));
 
   CreditoService creditoService = CreditoService();
   //creditoService.getAll();
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool estaLogado;
+
+  const MyApp({super.key, required this.estaLogado});
 
   // This widget is the root of your application.
   @override
@@ -37,7 +54,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: "login-novo",
+      initialRoute: (estaLogado) ? "home" : "login-novo",
       routes: {
         "login": (context) => const LoginScreen(),
         "login-novo": (context) => LoginNovoScreen(),
