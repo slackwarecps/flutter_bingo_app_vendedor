@@ -1,6 +1,7 @@
 import 'package:bingo_app_vendedor/modelos/Credito.dart';
 import 'package:bingo_app_vendedor/modelos/screen_arguments.dart';
 import 'package:bingo_app_vendedor/services/credito_service.dart';
+import 'package:bingo_app_vendedor/telas/commons/confirmacao_dialogo.dart';
 import 'package:flutter/material.dart';
 import 'package:bingo_app_vendedor/database/database.dart';
 
@@ -103,13 +104,25 @@ class _ReportFinanceiroScreenState extends State<ReportFinanceiroScreen> {
 
   void buttonRemoveCredito() {
     if (1 == 1) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Credito removido com sucesso'),
-        ),
-      );
-      //Atualiza a lista
-      refresh();
+      showConfirmationDialog(context,
+              conteudo: "Deseja realmente remover o credito?",
+              opcaoAfirmativa: "Remover")
+          .then((value) {
+        if (value != null) {
+          if (value == true) {
+            print('Removendo credito');
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Credito removido com sucesso'),
+              ),
+            );
+            //Atualiza a lista
+            refresh();
+          }
+        }
+      });
     }
+    ;
   }
 }
