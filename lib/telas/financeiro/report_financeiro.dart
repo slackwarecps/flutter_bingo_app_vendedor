@@ -1,9 +1,9 @@
-import 'package:bingo_app_vendedor/modelos/Credito.dart';
+import 'package:bingo_app_vendedor/modelos/credito.dart';
 import 'package:bingo_app_vendedor/modelos/screen_arguments.dart';
 import 'package:bingo_app_vendedor/services/credito_service.dart';
 import 'package:bingo_app_vendedor/telas/commons/confirmacao_dialogo.dart';
 import 'package:flutter/material.dart';
-import 'package:bingo_app_vendedor/database/database.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ReportFinanceiroScreen extends StatefulWidget {
@@ -77,7 +77,7 @@ class _ReportFinanceiroScreenState extends State<ReportFinanceiroScreen> {
             ),
             IconButton(
                 onPressed: () {
-                  buttonRemoveCredito();
+                  buttonRemoveCredito(1);
                 },
                 icon: Icon(Icons.delete)),
           ],
@@ -117,7 +117,7 @@ class _ReportFinanceiroScreenState extends State<ReportFinanceiroScreen> {
     });
   }
 
-  void buttonRemoveCredito() {
+  void buttonRemoveCredito(int id) {
     if (1 == 1) {
       showConfirmationDialog(context,
               conteudo: "Deseja realmente remover o credito?",
@@ -126,6 +126,11 @@ class _ReportFinanceiroScreenState extends State<ReportFinanceiroScreen> {
         if (value != null) {
           if (value == true) {
             print('Removendo credito');
+            SharedPreferences.getInstance().then((preferences) {
+              String? token = preferences.getString('accessToken');
+              String id = '1';
+              creditoService.remove(id, token!);
+            });
 
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(

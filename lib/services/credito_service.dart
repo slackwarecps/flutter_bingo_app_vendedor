@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:bingo_app_vendedor/modelos/Credito.dart';
+import 'package:bingo_app_vendedor/modelos/credito.dart';
 import 'package:bingo_app_vendedor/modelos/journal.dart';
 import 'package:bingo_app_vendedor/services/http_interceptors.dart';
 import 'package:http/http.dart' as http;
@@ -24,9 +24,14 @@ class CreditoService {
     return "$url$resourceJournal";
   }
 
-  Future<bool> remove(String id) async {
-    http.Response response = await http.delete(Uri.parse("${getURL()}$id"),
-        headers: {"Content-Type": "application/json"});
+  Future<bool> remove(
+    String id,
+    String token,
+  ) async {
+    http.Response response = await http.delete(
+      Uri.parse("${getURL()}$id"),
+      headers: {"Authorization": "Bearer $token"},
+    );
     if (response.statusCode == 200) {
       return true;
     }
@@ -47,12 +52,13 @@ class CreditoService {
     return false;
   }
 
-  Future<bool> adicionaCredito(Credito credito) async {
+  Future<bool> adicionaCredito(String token, Credito credito) async {
+    print("service adiciona credito...");
     String jsonCredito = json.encode(credito.toMap());
 
     http.Response response = await http.post(
       Uri.parse(getURL()),
-      headers: {"Content-Type": "application/json"},
+      headers: {"Authorization": "Bearer $token"},
       body: jsonCredito,
     );
     if (response.statusCode == 201) {

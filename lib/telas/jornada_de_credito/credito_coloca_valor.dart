@@ -1,11 +1,12 @@
 import 'dart:ffi';
 
-import 'package:bingo_app_vendedor/modelos/Credito.dart';
+import 'package:bingo_app_vendedor/modelos/credito.dart';
 import 'package:bingo_app_vendedor/modelos/credito_argumentos.dart';
 import 'package:bingo_app_vendedor/services/credito_service.dart';
 import 'package:bingo_app_vendedor/telas/home_screen.dart';
 import 'package:bingo_app_vendedor/telas/jornada_de_credito/credito_conclusao.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CreditoColocaValorScreen extends StatefulWidget {
   static const routeName = 'report-financeiro';
@@ -65,20 +66,26 @@ class _CreditoColocaValorScreenState extends State<CreditoColocaValorScreen> {
   }
 
   registraCredito(BuildContext context) async {
-    print('funcao de colocar credito chamada...');
+    print('Function to add credit called...');
     CreditoService creditoService = CreditoService();
 
-    Credito credito =
-        Credito(jogadorId: '123', nome: 'Tiao do Bar', valor: 23.50);
+    SharedPreferences.getInstance().then((preferences) {
+      int userId = preferences.getInt('id') ?? 0;
+      String? token = preferences.getString('accessToken');
+      Credito credito = Credito(
+          jogadorId: '123', nome: 'Tiao do Bar', valor: 23.50, userId: userId);
 
-    creditoService.adicionaCredito(credito).then((value) {
-      Navigator.pushNamed(context, 'credito-conclusao');
-      print('Deu certo fechando tela');
-    });
-
-    creditoService.adicionaCreditoFake(credito).then((value) {
-      Navigator.pushNamed(context, 'credito-conclusao');
-      print('Deu certo fechando tela FAKE');
+      creditoService.adicionaCredito(token!, credito).then((value) {
+        if (value == true) {
+          print('Credit added successfully');
+          Navigator.pushNamed(context, 'credito-conclusao');
+        } else {
+          print('Erro ao adicionar credito!!!');
+          Navigator.pop(context, DisposeStatus.error);
+        }
+      });
     });
   }
 }
+
+enum DisposeStatus { exit, error, success }
