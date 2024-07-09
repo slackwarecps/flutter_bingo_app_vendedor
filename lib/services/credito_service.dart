@@ -78,8 +78,11 @@ class CreditoService {
     return false;
   }
 
-  Future<List<Credito>> getAll() async {
-    http.Response response = await client.get(Uri.parse(getURL()));
+  Future<List<Credito>> getAll(
+      {required String userId, required String token}) async {
+    http.Response response = await client.get(
+        Uri.parse("${url}users/$userId/credito"),
+        headers: {"Authorization": "Bearer $token"});
 
     if (response.statusCode != 200) {
       throw Exception("Erro ao buscar creditos");

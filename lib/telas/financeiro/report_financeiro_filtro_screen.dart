@@ -17,21 +17,34 @@ class _ReportFinanceiroFiltroScreenState
     return Scaffold(
         appBar: AppBar(
           leading: Container(),
-          title: Text('Report Financeiro tela'),
+          title: Text('Report Financeiro Filtro'),
           actions: [],
         ),
         body: Center(
           child: Column(
             children: [
               Text('Reporte Financeiro tela !!!'),
-              ElevatedButton(
-                  onPressed: () {
-                    onButtonClick();
-                  },
-                  child: Text('Pesquisar'))
+              Row(
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        ButtonVoltarClick();
+                      },
+                      child: Text('Voltar')),
+                  ElevatedButton(
+                      onPressed: () {
+                        onButtonClick();
+                      },
+                      child: Text('Pesquisar')),
+                ],
+              )
             ],
           ),
         ));
+  }
+
+  void ButtonVoltarClick() {
+    Navigator.pushNamed(context, 'home');
   }
 
   void onButtonClick() {

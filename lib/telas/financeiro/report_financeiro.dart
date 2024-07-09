@@ -4,6 +4,7 @@ import 'package:bingo_app_vendedor/services/credito_service.dart';
 import 'package:bingo_app_vendedor/telas/commons/confirmacao_dialogo.dart';
 import 'package:flutter/material.dart';
 import 'package:bingo_app_vendedor/database/database.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ReportFinanceiroScreen extends StatefulWidget {
   const ReportFinanceiroScreen({Key? key}) : super(key: key);
@@ -86,18 +87,32 @@ class _ReportFinanceiroScreenState extends State<ReportFinanceiroScreen> {
   }
 
   void refresh() async {
-    List<Credito> listaCredito = await creditoService.getAll();
+    SharedPreferences.getInstance().then((prefs) {
+      String? token = prefs.getString('accessToken');
+      int? userId = prefs.getInt("id");
+      String? email = prefs.getString('email');
+      if (token != null && userId != null && email != null) {
+        //AQUI
 
-    setState(() {
-      database = {};
-      for (Credito credito in listaCredito) {
-        database[credito.jogadorId] = credito;
-        listaDeCredito.add(credito);
-      }
+        creditoService
+            .getAll(userId: userId.toString(), token: token)
+            .then((List<Credito> listaCredito) {
+          setState(() {
+            database = {};
+            for (Credito credito in listaCredito) {
+              database[credito.jogadorId] = credito;
+              listaDeCredito.add(credito);
+            }
 
-      if (_listScrollController.hasClients) {
-        final double position = _listScrollController.position.maxScrollExtent;
-        _listScrollController.jumpTo(position);
+            if (_listScrollController.hasClients) {
+              final double position =
+                  _listScrollController.position.maxScrollExtent;
+              _listScrollController.jumpTo(position);
+            }
+          });
+        });
+      } else {
+        Navigator.pushReplacementNamed(context, 'login');
       }
     });
   }
