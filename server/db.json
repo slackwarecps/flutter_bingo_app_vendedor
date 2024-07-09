@@ -9,6 +9,11 @@
       "email": "ninguem@mail.comx",
       "password": "$2a$10$NRdaX1IJDKR6jaOt31CwA.012NlbvXHt6rpKGEXvV5Ryiwcqjh0Zi",
       "id": 2
+    },
+    {
+      "email": "ninguem@mail.com123",
+      "password": "$2a$10$lFZyjU67eTZXSKLqciV98u1I7tt4bmx6Xb03SM3MWzdj7lkNn54N2",
+      "id": 3
     }
   ],
   "learnhttp": {

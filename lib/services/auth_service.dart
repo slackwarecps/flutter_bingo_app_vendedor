@@ -27,6 +27,10 @@ class AuthService {
 
       throw const HttpException("Erro ao fazer login");
     }
+
+    // salva info do usuario
+    salvaInfoUsuario(response.body);
+
     return true;
   }
 
@@ -35,6 +39,24 @@ class AuthService {
       Uri.parse("${url}register"),
       body: {"email": email, "password": senha},
     );
+    if (response.statusCode != 201) {
+      throw const HttpException("Erro ao fazer login");
+    }
+
+    // salva info do usuario
+    salvaInfoUsuario(response.body);
+  }
+
+  salvaInfoUsuario(String body) {
+    Map<String, dynamic> map = jsonDecode(body);
+    print("*************");
+    print(map);
+    String token = map["accessToken"];
+
+    String email = map["user"]["email"];
+    int id = map["user"]["id"];
+    print(" $token / $email / $id");
+    print("*************");
   }
 }
 
